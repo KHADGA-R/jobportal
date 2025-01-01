@@ -1,6 +1,5 @@
 package model;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,15 +14,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
+    private String role;
+    private String address;
+    private String phone;
+    private String profilePicture;
+    
 
-    public User(Long Id, String name, String email, String password) {
+    public User(Long Id, String firstName, String lastName, String email, String password, String role, String address, String phone, String profilePicture) {
         this.Id = Id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.role = role;
+        this.address = address;
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -34,12 +43,20 @@ public class User {
         Id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -50,14 +67,59 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }   
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }   
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }   
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
    //To string
     @Override
     public String toString() {
         return "User{" +
                 "Id=" + Id +
-                "name='" + name + '\'' +
+                "name='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
                 '}';
     }
     
