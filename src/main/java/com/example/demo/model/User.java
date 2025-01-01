@@ -1,10 +1,15 @@
-package model;
+package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "users")
@@ -14,16 +19,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "role")
     private String role;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "phone")
     private String phone;
+
+    @Column(name = "profile_picture")
     private String profilePicture;
     
+    public User() {
+    }
 
+    
     public User(Long Id, String firstName, String lastName, String email, String password, String role, String address, String phone, String profilePicture) {
         this.Id = Id;
         this.firstName = firstName;
@@ -43,6 +66,7 @@ public class User {
         Id = id;
     }
 
+    @JsonProperty("firstName") // Ensures proper JSON mapping
     public String getFirstName() {
         return firstName;
     }
