@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/userId")
-    public String getUserById() {
-        return "hello ! This is test of my controller.";
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
     
   
