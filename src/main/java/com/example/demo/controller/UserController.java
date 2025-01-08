@@ -91,8 +91,24 @@ public class UserController {
             .body("Error occured while fetching user . ");
         }
     }
-    
 
+    @GetMapping("users/email")
+    public ResponseEntity<?> findByEmail(@RequestParam("email") String email) {
+        try {
+            User user = userService.findByEmail(email);
+            if (user != null) {
+                return ResponseEntity.ok(user);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body("Error occurred while fetching user .");
+        }
+        
+            
+    }
+    
     @DeleteMapping("users/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
         try {
