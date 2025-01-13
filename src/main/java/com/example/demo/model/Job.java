@@ -28,75 +28,76 @@ public class Job {
     
     @Embeddable  // Add this annotation to make Company embeddable
     private static class Company {
+        
         private String companyName;
-        private String companyDescription;
+        private String companyDescription; 
         private String companyAddress;
         private String companyEmail;
         private String companyPhone;
         private String companyWebsite;
 
-    public Company() {
-    }
+        public Company() {
+        }
 
-    public Company(String companyName, String companyDescription, String companyAddress, String companyEmail, String companyPhone, String companyWebsite) {
-        this.companyName = companyName;
-        this.companyDescription = companyDescription;
-        this.companyAddress = companyAddress;
-        this.companyEmail = companyEmail;
-        this.companyPhone = companyPhone;
-        this.companyWebsite = companyWebsite;
-    }
+        public Company(String companyName, String companyDescription, String companyAddress, String companyEmail, String companyPhone, String companyWebsite) {
+            this.companyName = companyName;
+            this.companyDescription = companyDescription;
+            this.companyAddress = companyAddress;
+            this.companyEmail = companyEmail;
+            this.companyPhone = companyPhone;
+            this.companyWebsite = companyWebsite;
+        }
 
-    //Getter and Setter
+        //Getter and Setter
 
-    public String getCompanyName() {
-        return companyName;
-    }
+        public String getCompanyName() {
+            return companyName;
+        }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
+        public void setCompanyName(String companyName) {
+            this.companyName = companyName;
+        }
 
-    public String getCompanyDescription() {
-        return companyDescription;
-    }
+        public String getCompanyDescription() {
+            return companyDescription;
+        }
 
-    public void setCompanyDescription(String companyDescription) {
-        this.companyDescription = companyDescription;
-    }
+        public void setCompanyDescription(String companyDescription) {
+            this.companyDescription = companyDescription;
+        }
 
-    public String getCompanyAddress() {
-        return companyAddress;
-    }
+        public String getCompanyAddress() {
+            return companyAddress;
+        }
 
-    public void setCompanyAddress(String companyAddress) {
-        this.companyAddress = companyAddress;
-    }
+        public void setCompanyAddress(String companyAddress) {
+            this.companyAddress = companyAddress;
+        }
 
-    public String getCompanyEmail() {
-        return companyEmail;
-    }
+        public String getCompanyEmail() {
+            return companyEmail;
+        }
 
-    public void setCompanyEmail(String companyEmail) {
-        this.companyEmail = companyEmail;
-    }
+        public void setCompanyEmail(String companyEmail) {
+            this.companyEmail = companyEmail;
+        }
 
-    public String getCompanyPhone() {
-        return companyPhone;
-    }
+        public String getCompanyPhone() {
+            return companyPhone;
+        }
 
-    public void setCompanyPhone(String companyPhone) {
-        this.companyPhone = companyPhone;
-    }
+        public void setCompanyPhone(String companyPhone) {
+            this.companyPhone = companyPhone;
+        }
 
-    public String getCompanyWebsite() {
-        return companyWebsite;
-    }
+        public String getCompanyWebsite() {
+            return companyWebsite;
+        }
 
-    public void setCompanyWebsite(String companyWebsite) {
-        this.companyWebsite = companyWebsite;
-    }
-    
+        public void setCompanyWebsite(String companyWebsite) {
+            this.companyWebsite = companyWebsite;
+        }
+        
 
 }
 
