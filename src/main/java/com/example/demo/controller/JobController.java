@@ -3,7 +3,9 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.apache.catalina.connector.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,8 @@ import com.example.demo.service.JobService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+
 
 
 
@@ -33,13 +37,26 @@ public class JobController {
         return ResponseEntity.ok(jobs);
     }
 
+    @GetMapping("/jobs/{id}")
+    public ResponseEntity<?> getJobById(@PathVariable("id") Long id) {
+
+        Job job = jobService.getJobById(id);
+        if (job != null) {
+            return ResponseEntity.ok(job);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
     
+
     @PostMapping("/jobs/create")
-    public ResponseEntity<Job> createJob(@RequestBody Job job) {
+    public ResponseEntity<?> createJob(@RequestBody Job job) {
 
         try {
             Job createdJob = jobService.createJob(job);
-            return ResponseEntity.ok(createdJob);
+            String successMessage = "Job " + createdJob.getJobTitle() + " created successfully .";
+            return ResponseEntity.ok(successMessage);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
     
@@ -64,6 +81,25 @@ public class JobController {
             return ResponseEntity.badRequest().body("Error updating job: " + e.getMessage());
         }
        
+    }
+
+    @DeleteMapping("/jobs/{id}")
+    public ResponseEntity<?> deleteJob(@PathVariable("id") Long id) {
+        try {
+            Job job = jobService.getJobById(id);
+            if(job == null){
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Job not found with id: " + id);
+            }
+            jobService.deleteJob(id);
+            String successMessage = "Job " + job.getJobTitle() + " deleted successfully .";
+            return ResponseEntity.ok(successMessage);
+
+        }catch(Exception e){
+            return ResponseEntity.status(Response.SC_INTERNAL_SERVER_ERROR)
+            .body("Error deleting job: " + e.getMessage());
+        }
+
     }
     
 }
